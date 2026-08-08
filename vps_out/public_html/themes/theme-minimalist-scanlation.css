@@ -1,0 +1,347 @@
+/* theme-minimalist-scanlation.css — Elite Manga Editorial Brutalist Light Layout Template (Tailwind v4 Optimized) */
+
+
+/* --- TAILWIND CSS V4 THEME CONFIGURATION --- */
+@theme {
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'Playfair Display', serif;
+
+  --color-manga-ink: #000000;
+  --color-manga-paper: #ffffff;
+  --color-manga-accent: #f97316; /* High-intensity Tokyo Orange */
+  --color-manga-accent-muted: #ffedd5;
+  
+  --color-manga-gray-900: #fafafa;
+  --color-manga-gray-800: #f4f4f5;
+  --color-manga-gray-700: #e4e4e7;
+  --color-manga-gray-600: #d4d4d8;
+  --color-manga-gray-400: #71717a;
+  --color-manga-gray-200: #27272a;
+
+  --shadow-manga-flat: 3px 3px 0px 0px var(--color-manga-accent);
+  --shadow-manga-dark: 4px 4px 0px 0px var(--color-manga-ink);
+  --shadow-manga-editorial: 6px 6px 0px 0px var(--color-manga-ink);
+
+  --animate-manga-marquee: manga-marquee 25s linear infinite;
+}
+
+@keyframes manga-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- THEME DESIGN TOKENS --- */
+:root {
+  --theme-bg: #ffffff;
+  --theme-card: #ffffff;
+  --theme-card-rgb: 255, 255, 255;
+  --theme-border: var(--color-manga-ink);
+  --theme-text: var(--color-manga-gray-200);
+  --theme-text-muted: var(--color-manga-gray-400);
+  --theme-primary: var(--color-manga-accent);
+  --theme-primary-hover: #ea580c;
+  --theme-secondary: var(--color-manga-ink);
+  
+  /* Screentone Dot Settings — Black dots on white paper */
+  --screentone-color: rgba(0, 0, 0, 0.03);
+  --screentone-bg-size: 10px 10px;
+}
+
+/* --- GLOBAL LAYOUT & TYPOGRAPHY OVERRIDES --- */
+* {
+  font-family: 'JetBrains Mono', monospace !important;
+  border-radius: 0px !important; /* Strictly Brutalist Sharp Edges */
+  letter-spacing: -0.02em;
+}
+
+body {
+  background-color: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+  image-rendering: auto;
+  /* Premium halftone printed paper base pattern */
+  background-image: radial-gradient(var(--screentone-color) 1.5px, transparent 1.5px) !important;
+  background-size: var(--screentone-bg-size) var(--screentone-bg-size) !important;
+  background-attachment: fixed;
+}
+
+/* Manga Editorial Serif headings fallback */
+h1, h2, h3, .manga-title {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 900 !important;
+  font-style: italic;
+  letter-spacing: -0.04em;
+  color: var(--color-manga-ink) !important;
+}
+
+/* Hide modern visual noise grids/particles to retain classic ink aesthetic */
+.bg-grid,
+.bg-radial,
+#particle-canvas,
+.glass-effect {
+  display: none !important;
+  backdrop-filter: none !important;
+}
+
+/* --- REUSABLE MANGA GRAPHICS & UTILITY CLASSES --- */
+
+/* Authentically styled comic border frames */
+.manga-double-border {
+  border: 4px double var(--theme-border) !important;
+}
+
+/* Screen tone overlays for hover states */
+.screentone-hover {
+  position: relative;
+  overflow: hidden;
+}
+.screentone-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--color-manga-ink) 1px, transparent 1px);
+  background-size: 6px 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s steps(3);
+}
+.screentone-hover:hover::after {
+  opacity: 0.08;
+}
+
+/* Japanese Editorial Translation Brackets */
+.manga-bracket::before {
+  content: '「' !important;
+  color: var(--theme-primary) !important;
+  margin-right: 0.25rem;
+}
+.manga-bracket::after {
+  content: '」' !important;
+  color: var(--theme-primary) !important;
+  margin-left: 0.25rem;
+}
+
+/* --- COMPONENT STYLES --- */
+
+/* Public Header Navigation */
+.public-header {
+  background-color: #ffffff !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 4px solid var(--color-manga-ink) !important; /* Thick Ink Line */
+  box-shadow: none !important;
+  top: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 4rem !important;
+  transform: none !important;
+  left: 0 !important;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+}
+
+.logo-box {
+  background: var(--color-manga-ink) !important;
+  border: 2px solid var(--color-manga-ink) !important;
+  color: #ffffff !important;
+  padding: 0.25rem 0.75rem !important;
+  box-shadow: 3px 3px 0px var(--theme-primary) !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.logo-box:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px var(--color-manga-ink) !important;
+}
+
+.brand-text {
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+}
+
+header .brand-text {
+  color: var(--color-manga-ink) !important;
+}
+
+/* Premium Card Layout Overrides (Manga Cards & Admin Blocks) */
+.manga-card,
+.crud-card,
+.stat-card,
+.synopsis-card,
+.manga-synopsis-card,
+.admin-mangas-section {
+  background-color: #ffffff !important;
+  border: 3px solid var(--color-manga-ink) !important;
+  box-shadow: 4px 4px 0px 0px var(--color-manga-ink) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative;
+}
+
+/* Add a clean print-inspired catalog tag placeholder top right */
+.manga-card::before {
+  content: "CH.";
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  background: var(--color-manga-ink);
+  border-left: 1px solid var(--color-manga-ink);
+  border-bottom: 1px solid var(--color-manga-ink);
+  color: #ffffff;
+}
+
+.manga-card:hover,
+.stat-card:hover {
+  transform: translate(-4px, -4px) !important;
+  border-color: var(--color-manga-ink) !important;
+  box-shadow: 6px 6px 0px 0px var(--theme-primary) !important;
+  background-color: #ffffff !important;
+}
+
+/* Premium Chapter Catalog Layout Overrides */
+.chapter-card-premium {
+  background-color: #ffffff !important;
+  border: 2px solid var(--color-manga-ink) !important;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.15s steps(4) !important; /* Step-based comic transitions */
+}
+
+.chapter-card-premium:hover {
+  border-color: var(--theme-primary) !important;
+  transform: scale(1.01) !important;
+  box-shadow: 4px 4px 0px var(--color-manga-ink) !important;
+}
+
+.chapter-card-thumb {
+  border: 2px solid var(--color-manga-ink) !important;
+  filter: grayscale(100%) contrast(110%); /* High contrast vintage ink styling */
+  transition: filter 0.2s ease;
+}
+.chapter-card-premium:hover .chapter-card-thumb {
+  filter: grayscale(0%) contrast(100%);
+}
+
+.chapter-card-title {
+  color: var(--color-manga-ink) !important;
+}
+.chapter-card-subtitle {
+  color: var(--theme-text-muted) !important;
+}
+
+/* Interactive Buttons */
+.btn {
+  border: 2px solid var(--color-manga-ink) !important;
+  background: #ffffff !important;
+  color: var(--color-manga-ink) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.12s steps(3) !important;
+}
+
+.btn:hover {
+  background-color: var(--color-manga-ink) !important;
+  color: #ffffff !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 4px 4px 0px var(--theme-primary) !important;
+}
+
+.btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: none !important;
+}
+
+.btn-primary {
+  background-color: var(--theme-primary) !important;
+  border-color: var(--color-manga-ink) !important;
+  color: #ffffff !important;
+}
+.btn-primary:hover {
+  background-color: #ffffff !important;
+  border-color: var(--color-manga-ink) !important;
+  color: var(--color-manga-ink) !important;
+}
+
+/* Form Inputs */
+.form-input, 
+.form-select, 
+.form-textarea {
+  border: 2px solid var(--color-manga-ink) !important;
+  background-color: #ffffff !important;
+  color: var(--color-manga-ink) !important;
+  padding: 0.75rem 1rem !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.form-input:focus, 
+.form-select:focus, 
+.form-textarea:focus {
+  outline: none !important;
+  border-color: var(--theme-primary) !important;
+  background-color: #ffffff !important;
+  box-shadow: 3px 3px 0px var(--theme-primary) !important;
+}
+
+/* Manga Metadata Badges */
+.badge {
+  border: 2px solid var(--color-manga-ink) !important;
+  background: var(--color-manga-accent-muted) !important;
+  color: var(--theme-primary) !important;
+  text-transform: uppercase;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  padding: 0.25rem 0.5rem !important;
+  box-shadow: 2px 2px 0px var(--color-manga-ink) !important;
+}
+
+/* Hero Dossier Banner Block */
+.hero-dossier {
+  background-color: #ffffff !important;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.93), rgba(255, 255, 255, 0.98)), 
+    url('/images/hero_minimalist.webp');
+  background-size: cover;
+  background-position: center;
+  border: 4px solid var(--color-manga-ink) !important; /* Authentic Frame look */
+  padding: 5rem 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Screen tone backing decoration on Hero Banner */
+.hero-dossier::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 2px, transparent 2px);
+  background-size: 8px 8px;
+  pointer-events: none;
+  opacity: 0.5;
+  mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+/* --- OPTIONAL SCROLLBAR STYLING --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-manga-gray-600);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-primary);
+}

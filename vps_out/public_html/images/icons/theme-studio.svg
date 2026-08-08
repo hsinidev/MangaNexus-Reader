@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#db2777" />
+    </linearGradient>
+    <filter id="neonPurple" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="9" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="512" height="512" rx="128" fill="#090b11" stroke="#a855f7" stroke-width="4" stroke-opacity="0.15" />
+
+  <!-- Background Starry Sparkles -->
+  <g fill="#ffffff" opacity="0.15">
+    <circle cx="100" cy="120" r="4" />
+    <circle cx="420" cy="150" r="3" />
+    <circle cx="120" cy="380" r="5" />
+    <circle cx="380" cy="400" r="4" />
+  </g>
+
+  <!-- Theme Studio Palette Group -->
+  <g filter="url(#neonPurple)">
+    <!-- Palette Body -->
+    <path d="M120 280 C90 190, 160 110, 260 100 C370 90, 430 180, 410 280 C390 380, 270 430, 210 400 C180 385, 175 360, 160 360 C130 360, 150 370, 120 280 Z" fill="url(#purpleGrad)" />
+    
+    <!-- Thumb Hole -->
+    <circle cx="190" cy="340" r="24" fill="#090b11" />
+    
+    <!-- Paint Droplets / Swatches -->
+    <circle cx="180" cy="180" r="20" fill="#ff3a3a" stroke="#ffffff" stroke-width="3" />
+    <circle cx="260" cy="150" r="20" fill="#06b6d4" stroke="#ffffff" stroke-width="3" />
+    <circle cx="340" cy="190" r="20" fill="#facc15" stroke="#ffffff" stroke-width="3" />
+    <circle cx="360" cy="270" r="20" fill="#10b981" stroke="#ffffff" stroke-width="3" />
+
+    <!-- Paintbrush crossing the palette -->
+    <g transform="rotate(45 256 256)">
+      <!-- Brush Handle -->
+      <rect x="246" y="20" width="20" height="340" rx="10" fill="#1e293b" stroke="#ffffff" stroke-width="4" />
+      
+      <!-- Silver Ferrule -->
+      <rect x="241" y="320" width="30" height="50" rx="4" fill="#94a3b8" />
+      
+      <!-- Brush Tip (Bristles) -->
+      <path d="M241 370 C241 410, 256 430, 256 430 C256 430, 271 410, 271 370 Z" fill="#db2777" />
+      <!-- Splat of paint on tip -->
+      <circle cx="256" cy="420" r="8" fill="#ffffff" opacity="0.8" />
+    </g>
+  </g>
+</svg>

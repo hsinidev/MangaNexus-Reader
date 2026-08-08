@@ -1,0 +1,426 @@
+/* theme-solarized-novel.css — Premium Solarized Novel (Archival Leather) Theme */
+
+/* ==========================================================================
+   TAILWIND v4 THEME & VARIABLE CONFIGURATION
+   ========================================================================== */
+@theme {
+  /* Solarized Palette - Specially curated for high-contrast reading comfort */
+  --color-solar-bg-deep: #002b36;       /* Solarized Base03 (Deep ocean abyss) */
+  --color-solar-bg-card: #073642;       /* Solarized Base02 (Cozy dark parchment teal) */
+  --color-solar-bg-sidebar: #00212b;    /* Solarized Base04 (Super-deep border contrast) */
+  --color-solar-text-cream: #fdf6e3;    /* Solarized Base3 (Warm physical paper glow) */
+  --color-solar-text-paper: #eee8d5;    /* Solarized Base2 (Muted soft page tone) */
+  --color-solar-text-dim: #93a1a1;      /* Solarized Base1 (Classy editorial gray-teal) */
+  --color-solar-text-muted: #586e75;    /* Solarized Base01 (Subdued commentary text) */
+  
+  /* Solarized Accent Spectrum */
+  --color-solar-cyan: #2aa198;          /* Primary glowing turquoise ink */
+  --color-solar-green: #859900;         /* Secondary fresh botanical green */
+  --color-solar-blue: #268bd2;          /* Electric cyan blue for interactive highlights */
+  --color-solar-orange: #cb4b16;        /* Retro editorial orange (bookmark ribbon red-orange) */
+  --color-solar-gold: #b58900;          /* Solarized Yellow (Ex-libris gold gilding) */
+  
+  /* Novel Typography */
+  --font-novel-serif: 'Lora', Georgia, serif;
+  --font-novel-display: 'Cinzel', serif;
+  --font-novel-mono: 'Fira Code', monospace;
+  
+  /* Premium Bookish Shadow Systems (Simulating gold leaf & deep recessed panels) */
+  --shadow-solar-emboss: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 0px rgba(253, 246, 227, 0.1);
+  --shadow-solar-gilded: 0 0 15px rgba(181, 137, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-solar-panel: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(253, 246, 227, 0.05);
+  --shadow-solar-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(42, 161, 152, 0.25);
+}
+
+/* Fallback/compatibility root variables */
+:root {
+  --theme-bg: var(--color-solar-bg-deep, #002b36);
+  --theme-card: var(--color-solar-bg-card, #073642);
+  --theme-border: rgba(42, 161, 152, 0.2);
+  --theme-text: var(--color-solar-text-cream, #fdf6e3);
+  --theme-text-muted: var(--color-solar-text-dim, #93a1a1);
+  --theme-primary: var(--color-solar-cyan, #2aa198);
+  --theme-secondary: var(--color-solar-green, #859900);
+  --theme-primary-hover: var(--color-solar-blue, #268bd2);
+  --theme-glow: rgba(42, 161, 152, 0.15);
+  --theme-sidebar-bg: var(--color-solar-bg-sidebar, #00212b);
+  --theme-input-bg: rgba(0, 33, 43, 0.6);
+  --theme-glow-intensity: 0 0 25px rgba(42, 161, 152, 0.25);
+  --theme-shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --theme-shadow-md: 0 12px 35px rgba(0, 0, 0, 0.5);
+  --theme-shadow-lg: 0 25px 55px rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================================================
+   2. GLOBAL BODY & PRINT-INSPIRED DECORATIONS
+   ========================================================================== */
+* {
+  font-family: var(--font-novel-serif) !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+body {
+  background-color: var(--color-solar-bg-deep) !important;
+  color: var(--color-solar-text-paper) !important;
+  /* Simulating subtle horizontal notebook lines and premium fiber weave */
+  background-image:
+    linear-gradient(rgba(253, 246, 227, 0.015) 1px, transparent 1px),
+    radial-gradient(rgba(42, 161, 152, 0.03) 15%, transparent 16%) !important;
+  background-size: 100% 24px, 16px 16px !important;
+  background-position: 0 0 !important;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.75;
+}
+
+/* Elegant framing vignette at the edges of the page to focus the reader */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  box-shadow: inset 0 0 100px rgba(0, 15, 20, 0.8);
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Hide default distracting animation grids */
+.bg-grid,
+.bg-radial,
+#particle-canvas {
+  display: none !important;
+}
+
+/* Custom Selection State - Warm gold highlight simulating library felt */
+::selection {
+  background-color: var(--color-solar-gold);
+  color: var(--color-solar-bg-deep);
+}
+
+/* ==========================================================================
+   3. PUBLIC HEADER / NAVIGATION
+   ========================================================================== */
+.public-header {
+  background-color: var(--color-solar-bg-card) !important;
+  border-top: 4px solid var(--color-solar-gold) !important; /* Gold embossed spine top */
+  border-bottom: 2px solid rgba(42, 161, 152, 0.3) !important;
+  border-left: 1px solid rgba(42, 161, 152, 0.2) !important;
+  border-right: 1px solid rgba(42, 161, 152, 0.2) !important;
+  border-radius: 0 0 12px 12px !important;
+  box-shadow: var(--shadow-solar-panel) !important;
+  padding: 1.25rem 2rem !important;
+}
+
+.logo-box {
+  background: var(--color-solar-bg-deep) !important;
+  border: 1px solid var(--color-solar-cyan) !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 1.25rem !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background-color: var(--color-solar-gold);
+}
+
+.brand-text {
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  color: var(--color-solar-text-cream) !important;
+  font-family: var(--font-novel-display) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  color: var(--color-solar-text-dim) !important;
+  font-weight: 500 !important;
+  border-bottom: 1px solid transparent !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+.nav-link:hover {
+  color: var(--color-solar-cyan) !important;
+  border-bottom: 1px double var(--color-solar-cyan) !important;
+}
+
+/* ==========================================================================
+   4. PREMIUM MANGA CARDS (Leather-bound Cover Aesthetic)
+   ========================================================================== */
+.manga-card,
+.crud-card,
+.stat-card,
+.synopsis-card,
+.manga-synopsis-card,
+.admin-mangas-section {
+  background-color: var(--color-solar-bg-card) !important;
+  border: 1px solid rgba(42, 161, 152, 0.25) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-solar-panel) !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Beautiful book binding groove on the left margin of every card */
+.manga-card::before,
+.synopsis-card::before,
+.manga-synopsis-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12px;
+  width: 1px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 0 0 rgba(253, 246, 227, 0.04);
+  z-index: 5;
+}
+
+.manga-card:hover,
+.stat-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(42, 161, 152, 0.6) !important;
+  box-shadow: var(--shadow-solar-hover) !important;
+}
+
+/* Gold leaf ornaments on corners of cards to accentuate luxury details */
+.manga-card::after {
+  content: '✥';
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  color: rgba(181, 137, 0, 0.25);
+  font-size: 0.8rem;
+  font-family: var(--font-novel-display);
+}
+
+/* Gorgeous Gilded Typography for Literary Headings */
+.manga-title,
+.single-title,
+.section-title {
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  color: var(--color-solar-text-cream) !important;
+  font-family: var(--font-novel-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.section-title {
+  border-bottom: 1px double rgba(181, 137, 0, 0.4) !important;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.synopsis-text,
+.synopsis-card p,
+.manga-synopsis-card p {
+  color: var(--color-solar-text-paper) !important;
+  line-height: 1.8 !important;
+  font-size: 1.05rem !important;
+}
+
+/* ==========================================================================
+   5. PREMIUM CHAPTER CATALOG LAYOUT (Archival Index Style)
+   ========================================================================== */
+.chapter-card-premium {
+  background-color: rgba(0, 33, 43, 0.3) !important;
+  border: 1px solid rgba(42, 161, 152, 0.15) !important;
+  border-left: 3px solid var(--color-solar-gold) !important; /* Gold index ribbon */
+  border-radius: 4px !important;
+  box-shadow: inset 0 1px 0 rgba(253, 246, 227, 0.02) !important;
+  transition: all 0.25s ease !important;
+}
+
+.chapter-card-premium:hover {
+  background-color: rgba(0, 43, 54, 0.7) !important;
+  border-color: var(--color-solar-cyan) !important;
+  border-left-width: 5px !important;
+  transform: translateX(3px) !important;
+}
+
+.chapter-card-title {
+  color: var(--color-solar-text-cream) !important;
+  font-weight: 600 !important;
+}
+
+.chapter-card-thumb {
+  border-radius: 4px !important;
+  border: 1px solid rgba(42, 161, 152, 0.35) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4) !important;
+  transition: transform 0.25s ease !important;
+}
+
+.chapter-card-premium:hover .chapter-card-thumb {
+  transform: scale(1.03);
+  border-color: var(--color-solar-cyan) !important;
+}
+
+.chapter-card-subtitle {
+  color: var(--color-solar-text-dim) !important;
+  font-family: var(--font-novel-mono) !important;
+  font-size: 0.8rem !important;
+}
+
+.chapter-card-link {
+  color: var(--color-solar-cyan) !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   6. LITERARY ACTION BUTTONS & FORM INPUTS
+   ========================================================================== */
+.btn {
+  border-radius: 4px !important;
+  border: 1px solid rgba(181, 137, 0, 0.6) !important; /* Elegant gold gild border */
+  box-shadow: var(--theme-shadow-sm) !important;
+  font-family: var(--font-novel-display) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700 !important;
+  padding: 0.6rem 1.25rem !important;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.btn-primary {
+  background-color: var(--color-solar-cyan) !important;
+  color: var(--color-solar-bg-deep) !important;
+  border-color: var(--color-solar-cyan) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-solar-blue) !important;
+  border-color: var(--color-solar-blue) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 15px rgba(38, 139, 210, 0.4) !important;
+}
+
+.btn:active {
+  transform: translateY(1px) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important;
+}
+
+/* Form inputs styling simulating vintage copper inkstands */
+.form-input,
+.form-select,
+.form-textarea {
+  border-radius: 4px !important;
+  border: 1px solid rgba(42, 161, 152, 0.3) !important;
+  background-color: rgba(0, 33, 43, 0.8) !important;
+  color: var(--color-solar-text-cream) !important;
+  padding: 0.75rem 1rem !important;
+  font-family: var(--font-novel-serif) !important;
+  box-shadow: var(--shadow-solar-emboss) !important;
+  transition: all 0.2s ease !important;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none !important;
+  border-color: var(--color-solar-cyan) !important;
+  box-shadow: 0 0 10px rgba(42, 161, 152, 0.35), var(--shadow-solar-emboss) !important;
+}
+
+/* Ex-Libris Stamp Badges */
+.badge {
+  border-radius: 3px !important;
+  background-color: rgba(181, 137, 0, 0.1) !important;
+  color: var(--color-solar-gold) !important;
+  border: 1px solid rgba(181, 137, 0, 0.3) !important;
+  font-family: var(--font-novel-display) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem !important;
+}
+
+/* ==========================================================================
+   7. ARCHIVAL HERO DOSSIER (Grand Study Frame)
+   ========================================================================== */
+.hero-dossier {
+  background-color: var(--color-solar-bg-card) !important;
+  /* Multi-layered composite: Vintage grid lines overlay + Solarized gradient + Background art */
+  background-image:
+    linear-gradient(rgba(7, 54, 66, 0.88), rgba(7, 54, 66, 0.98)),
+    linear-gradient(rgba(181, 137, 0, 0.05) 1px, transparent 1px),
+    url('/images/hero_solarized.webp');
+  background-size: cover, 100% 30px, cover;
+  background-position: center;
+  border: 2px solid rgba(42, 161, 152, 0.3) !important;
+  border-top: 6px solid var(--color-solar-gold) !important; /* Gilded shelf top */
+  border-radius: 8px !important;
+  padding: 4.5rem 2.5rem !important;
+  box-shadow: var(--shadow-solar-panel) !important;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+/* Delicate filigree markings on corner structures of Dossier */
+.hero-dossier::before,
+.hero-dossier::after {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: rgba(181, 137, 0, 0.35);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.hero-dossier::before {
+  top: 15px;
+  left: 15px;
+  border-width: 1px 0 0 1px;
+}
+
+.hero-dossier::after {
+  bottom: 15px;
+  right: 15px;
+  border-width: 0 1px 1px 0;
+}
+
+/* ==========================================================================
+   8. EXTRA LITERARY STYLE AMENITIES
+   ========================================================================= */
+/* Drop-cap decoration for premium editorial starting letters */
+.novel-dropcap::first-letter {
+  font-family: var(--font-novel-display) !important;
+  float: left;
+  font-size: 3.25rem;
+  line-height: 0.8;
+  padding-top: 4px;
+  padding-right: 8px;
+  color: var(--color-solar-gold);
+}
+
+/* Ribbon Bookmark simulation strip */
+.novel-bookmark {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  width: 14px;
+  height: 48px;
+  background-color: var(--color-solar-orange);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+.novel-bookmark::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-width: 0 7px 7px;
+  border-style: solid;
+  border-color: transparent transparent var(--color-solar-bg-card);
+}

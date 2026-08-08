@@ -1,0 +1,168 @@
+# ══════════════════════════════════════════════════════════════
+# 1. جدار حماية لمنع إعلانات النوافذ المزيفة والاختراقات (CSP)
+# ══════════════════════════════════════════════════════════════
+<IfModule mod_headers.c>
+    # هذا السطر يمنع إعلانات Adsterra الخبيثة من استدعاء سيرفر polyfill أو إظهار نافذة تسجيل دخول مزيفة للزوار
+    Header always set Content-Security-Policy "script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data:; style-src * 'unsafe-inline'; connect-src *; frame-src *; child-src *; sandbox allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts;"
+</IfModule>
+
+# ══════════════════════════════════════════════════════════════
+# 2. حظر الروبوتات وسيرفرات التجسس وسحب المحتوى من سنغافورة
+# ══════════════════════════════════════════════════════════════
+<RequireAll>
+    Require all granted
+    
+    # سنغافورة - سيرفرات DigitalOcean
+    Require not ip 128.199.64.0/18
+    Require not ip 139.59.192.0/18
+    Require not ip 178.128.16.0/20
+    Require not ip 206.189.32.0/19
+    Require not ip 159.65.128.0/19
+    Require not ip 167.99.64.0/18
+    
+    # سنغافورة - سيرفرات AWS Amazon
+    Require not ip 13.228.0.0/15
+    Require not ip 18.136.0.0/16
+    Require not ip 54.254.0.0/16
+    Require not ip 3.0.0.0/15
+    
+    # سنغافورة - سيرفرات Google Cloud
+    Require not ip 34.124.0.0/16
+    Require not ip 34.143.0.0/16
+    Require not ip 35.185.128.0/19
+    
+    # سنغافورة - سيرفرات Linode
+    Require not ip 139.162.0.0/16
+    Require not ip 172.104.160.0/19
+</RequireAll>
+
+# ══════════════════════════════════════════════════════════════
+# 3. نظام توجيه الروابط وحماية الملفات الحساسة
+# ══════════════════════════════════════════════════════════════
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # منع الوصول للملفات المخفية مثل الحماية والبيئات (مثل .git, .env)
+    RewriteRule ^\..*$ - [F,L]
+
+    # منع الدخول المباشر لمجلدات النظام والبرمجة والمكتبات
+    RewriteRule ^(templates|src|data|vendor)/.*$ - [F,L]
+
+    # منع الوصول لملفات إدارة الحزم المكتوبة بـ Composer
+    RewriteRule ^composer\.(json|lock)$ - [F,L]
+
+    # السماح للمتصفح بفتح الصور والملفات والمجلدات الموجودة فعلياً بشكل طبيعي
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # توجيه جميع الروابط الأخرى لتشغيل اسكريبت المانجا عبر ملف index.php الرئيسي
+    RewriteRule ^(.*)$ index.php?_route=$1 [L,QSA]
+</IfModule>
+
+# ══════════════════════════════════════════════════════════════
+# 4. تسريع الموقع وضغط الملفات لتقليل الضغط على الـ VPS
+# ══════════════════════════════════════════════════════════════
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/xml application/xhtml+xml
+    AddOutputFilterByType DEFLATE image/svg+xml font/ttf font/otf application/font-woff application/font-woff2
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|jpg|png|webp|avif|gz|bz2|zip|rar|mp4|mp3|ogg|flv|woff2)$ no-gzip dont-vary
+</IfModule>
+
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+    AddOutputFilterByType BROTLI_COMPRESS text/javascript application/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json image/svg+xml
+</IfModule>
+
+# ══════════════════════════════════════════════════════════════
+# 5. كاش المتصفح لتخزين الصور والملفات الثابتة وتسريع التصفح
+# ══════════════════════════════════════════════════════════════
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault                              "access plus 1 month"
+
+    ExpiresByType text/html                     "access plus 1 hour"
+    ExpiresByType text/css                      "access plus 1 year"
+    ExpiresByType text/javascript               "access plus 1 year"
+    ExpiresByType application/javascript        "access plus 1 year"
+
+    ExpiresByType image/webp                    "access plus 1 year"
+    ExpiresByType image/jpeg                    "access plus 1 year"
+    ExpiresByType image/jpg                     "access plus 1 year"
+    ExpiresByType image/png                     "access plus 1 year"
+    ExpiresByType image/gif                     "access plus 1 year"
+    ExpiresByType image/svg+xml                 "access plus 1 year"
+    ExpiresByType image/x-icon                  "access plus 1 year"
+    ExpiresByType image/vnd.microsoft.icon      "access plus 1 year"
+
+    ExpiresByType font/ttf                      "access plus 1 year"
+    ExpiresByType font/otf                      "access plus 1 year"
+    ExpiresByType font/woff                     "access plus 1 year"
+    ExpiresByType font/woff2                    "access plus 1 year"
+    ExpiresByType application/font-woff         "access plus 1 year"
+    ExpiresByType application/font-woff2        "access plus 1 year"
+
+    ExpiresByType application/json              "access plus 0 seconds"
+    ExpiresByType application/xml               "access plus 0 seconds"
+</IfModule>
+
+# ══════════════════════════════════════════════════════════════
+# 6. إعدادات جدران الحماية الإضافية للمتصفحات
+# ══════════════════════════════════════════════════════════════
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|webp|jpg|jpeg|png|gif|svg|woff|woff2|ttf|otf|ico)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+        Header unset ETag
+    </FilesMatch>
+
+    <FilesMatch "\.php$">
+        Header set Cache-Control "public, max-age=3600, must-revalidate"
+    </FilesMatch>
+
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Connection keep-alive
+</IfModule>
+
+# ══════════════════════════════════════════════════════════════
+# 7. تعريف صيغ ملفات الصور الحديثة والخطوط
+# ══════════════════════════════════════════════════════════════
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType image/avif .avif
+    AddType font/woff2 .woff2
+    AddType font/woff .woff
+    AddType application/wasm .wasm
+    AddType application/octet-stream .data .bundle
+</IfModule>
+
+FileETag None
+
+# ══════════════════════════════════════════════════════════════
+# 8. رفع قيود السيرفر لرفع ملفات المانجا الكبيرة (ZIP) حتى 5 جيجا
+# ══════════════════════════════════════════════════════════════
+<IfModule mod_php.c>
+    php_value upload_max_filesize 5120M
+    php_value post_max_size 5120M
+    php_value memory_limit 512M
+    php_value max_execution_time 3600
+    php_value max_input_time 3600
+</IfModule>
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 5120M
+    php_value post_max_size 5120M
+    php_value memory_limit 512M
+    php_value max_execution_time 3600
+    php_value max_input_time 3600
+</IfModule>
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 5120M
+    php_value post_max_size 5120M
+    php_value memory_limit 512M
+    php_value max_execution_time 3600
+    php_value max_input_time 3600
+</IfModule>

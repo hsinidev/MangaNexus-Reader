@@ -1,0 +1,127 @@
+/* theme-madara.css — Premium Madara Red Theme Layout Template */
+@import "tailwindcss";
+
+
+/* --- TAILWIND CSS V4 THEME CONFIGURATION --- */
+@theme {
+  --font-sans: 'Outfit', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+
+  --color-theme-bg: #0b0708;
+  --color-theme-card: #160e0f;
+  --color-theme-border: rgba(255, 58, 58, 0.15);
+  --color-theme-border-hover: rgba(255, 58, 58, 0.45);
+  --color-theme-text: #fafafa;
+  --color-theme-text-muted: #d4d4d8;
+  --color-theme-primary: #ff3a3a;
+  --color-theme-secondary: #991b1b;
+  --color-theme-primary-hover: #e02828;
+  --color-theme-glow: rgba(255, 58, 58, 0.3);
+
+  --shadow-manga-glow: 0 0 25px rgba(255, 58, 58, 0.25);
+  --transition-manga: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- THEME-SPECIFIC ROOT CSS VARIABLES --- */
+:root {
+  --theme-bg: #0b0708;
+  --theme-card: #160e0f;
+  --theme-card-rgb: 22, 14, 15;
+  --theme-border: rgba(255, 58, 58, 0.12);
+  --theme-card-hover-border: #ff3a3a;
+  --theme-text: #fafafa;
+  --theme-text-muted: #a1a1aa;
+  --theme-primary: #ff3a3a;
+  --theme-primary-rgb: 255, 58, 58;
+  --theme-secondary: #991b1b;
+  --theme-secondary-rgb: 153, 27, 27;
+  --theme-primary-hover: #e02828;
+  --theme-glow: rgba(255, 58, 58, 0.25);
+  --theme-gradient: linear-gradient(135deg, #ff3a3a 0%, #881337 100%);
+  --theme-glass-blur: 16px;
+  --theme-sidebar-bg: #0d090a;
+  --theme-input-bg: #1e1314;
+}
+
+body {
+  font-family: 'Outfit', sans-serif !important;
+  background-color: var(--theme-bg) !important;
+  background-image: 
+    radial-gradient(rgba(255, 58, 58, 0.03) 1.5px, transparent 1.5px),
+    radial-gradient(circle at top right, rgba(255, 58, 58, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at bottom left, rgba(153, 27, 27, 0.05) 0%, transparent 45%) !important;
+  background-size: 24px 24px, 100% 100%, 100% 100% !important;
+  background-attachment: fixed !important;
+  color: var(--theme-text) !important;
+}
+
+/* --- PUBLIC NAVIGATION HEADER (MADARA SPECIFIC STYLE) --- */
+.theme-madara .public-header {
+  background-color: #ff3a3a !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 10px 30px rgba(255, 58, 58, 0.3) !important;
+  color: #ffffff !important;
+}
+
+.theme-madara .public-header .brand-text {
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+.theme-madara .public-header .logo-box {
+  background: #ffffff !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+}
+
+.theme-madara .public-header .logo-icon {
+  color: #ff3a3a !important;
+}
+
+.theme-madara .public-header .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 9999px !important;
+  transition: all 0.2s ease !important;
+}
+
+.theme-madara .public-header .nav-link:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Rounded and sleek forms, panels, cards */
+.manga-card, .crud-card, .stat-card, .manga-synopsis-card {
+  border-radius: 1.5rem !important;
+  border: 1px solid rgba(255, 58, 58, 0.15) !important;
+}
+
+.manga-card:hover, .stat-card:hover {
+  border-color: #ff3a3a !important;
+  box-shadow: 0 12px 30px rgba(255, 58, 58, 0.15) !important;
+}
+
+.btn {
+  border-radius: 9999px !important;
+}
+
+.form-input, .form-select, .form-textarea {
+  border-radius: 1rem !important;
+}
+
+.badge {
+  border-radius: 9999px !important;
+  border-color: #ff3a3a !important;
+  background-color: rgba(255, 58, 58, 0.1) !important;
+  color: #ff8585 !important;
+}
+
+.badge:hover {
+  background-color: #ff3a3a !important;
+  color: #ffffff !important;
+}

@@ -1,0 +1,186 @@
+/* theme-manga-dark.css — Elite "Manga Noir" Tailwind 4 Theme */
+
+@theme {
+  /* Registering Tailwind v4 custom theme variables */
+  --color-manga-bg: #09090b;
+  --color-manga-card: #121217;
+  --color-manga-ink: #18181b;
+  --color-manga-paper: #f4f4f5;
+  --color-manga-accent: #e11d48;
+  --color-manga-screentone: rgba(225, 29, 72, 0.15);
+  
+  --shadow-manga-flat: 4px 4px 0px 0px #000000;
+  --shadow-manga-active: 8px 8px 0px 0px #e11d48;
+  --shadow-manga-inset: inset 4px 4px 0px 0px rgba(0, 0, 0, 0.8);
+}
+
+:root {
+  /* --- Core Variables (Swappable with original layout config) --- */
+  --theme-bg: #08080a;                  /* Pitch black inkwell */
+  --theme-card: #111115;                /* Matte ink-wash dark card */
+  --theme-card-rgb: 17, 17, 21;
+  
+  /* Bold, dynamic borders replace soft glowing outlines */
+  --theme-border: #1f1f23;              
+  --theme-border-thick: 3px solid #000000;
+  --theme-card-hover-border: #e11d48;   /* Shonen Crimson highlight */
+
+  /* High-contrast Typography */
+  --theme-text: #f4f4f6;                /* Pure comic paper white */
+  --theme-text-muted: #a1a1aa;          /* Newsprint gray */
+
+  /* Accents */
+  --theme-primary: #e11d48;             /* Shonen Crimson Red */
+  --theme-primary-rgb: 225, 29, 72;
+  --theme-secondary: #facc15;           /* Cyber-Manga Yellow (alternative accent) */
+  --theme-secondary-rgb: 250, 204, 21;
+  --theme-primary-hover: #be123c;
+  
+  /* Comic Book Shadows (Hard-edge offset instead of blurry ambient light) */
+  --theme-shadow-sm: 2px 2px 0px #000000;
+  --theme-shadow-md: 5px 5px 0px #000000;
+  --theme-shadow-lg: 10px 10px 0px #000000;
+  
+  /* Manga Halftone & Impact Glows */
+  --theme-glow: rgba(225, 29, 72, 0.25);
+  --theme-glow-intensity: 0px 0px 0px 3px #000, 6px 6px 0px #e11d48;
+  --theme-gradient: linear-gradient(135deg, #e11d48 0%, #facc15 100%);
+  --theme-glass-blur: 0px; /* Manga design favors crisp lines over glass opacity */
+  --theme-sidebar-bg: #0d0d11;
+  --theme-input-bg: #18181c;
+}
+
+/* Base resets & styled typography */
+body {
+  font-family: 'Impact', 'Outfit', 'Trebuchet MS', sans-serif;
+  background-color: var(--theme-bg);
+  background-image: 
+    /* Subtle manga texture grid */
+    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+    radial-gradient(rgba(255, 255, 255, 0.02) 2px, transparent 0);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+  color: var(--theme-text);
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   EXCLUSIVE MANGA COMPONENTS & UTILITY CLASSES
+   ========================================================================== */
+
+/* The Dynamic Hero Dossier Panel */
+.hero-dossier {
+  position: relative;
+  overflow: hidden;
+  /* Complex overlay styling mimicking an action packed manga splash page */
+  background-image: 
+    linear-gradient(45deg, rgba(0,0,0,0.95) 30%, rgba(225, 29, 72, 0.2) 70%, rgba(0,0,0,0.4) 100%), 
+    url('/images/hero_midnight.webp');
+  background-size: cover;
+  background-position: center;
+  border: 4px solid #000000;
+  border-radius: 0px; /* Hard, dramatic corners fit the manga style better */
+  padding: 5rem 3rem;
+  box-shadow: 12px 12px 0px #000000, 12px 12px 0px 4px #e11d48;
+  margin-bottom: 4rem;
+  transform: rotate(-0.5deg); /* Dynamic page skew */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-dossier::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Authentic Manga Screentone (Halftone dots) */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 16%);
+  background-size: 8px 8px;
+  opacity: 0.7;
+}
+
+.hero-dossier:hover {
+  transform: scale(1.01) rotate(0.5deg);
+}
+
+/* Manga Panel (Replaces generic cards) */
+.manga-panel {
+  background-color: var(--theme-card);
+  border: 3px solid #000000;
+  border-radius: 4px;
+  box-shadow: var(--theme-shadow-md);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+.manga-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.manga-panel:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 9px 9px 0px #e11d48;
+  border-color: #000000;
+}
+
+/* Classic Shonen Screentone Dot Overlay class */
+.screentone-dots {
+  background-image: radial-gradient(currentColor 20%, transparent 25%);
+  background-size: 6px 6px;
+}
+
+/* Dynamic Action Speed Lines */
+.speed-lines {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+}
+
+/* Dynamic skews to create diagonal comic layout cuts */
+.manga-skew-right {
+  clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%);
+}
+
+.manga-skew-left {
+  clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+}
+
+/* Speech/Thoughts bubble accents for comic UI cards */
+.speech-tail-bottom {
+  position: relative;
+}
+.speech-tail-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 15px solid #000000;
+}
+
+/* Bold Manga Accent Badges */
+.manga-tag {
+  background-color: #e11d48;
+  color: #000000;
+  font-weight: 900;
+  text-transform: uppercase;
+  border: 2px solid #000000;
+  transform: skewX(-12deg);
+  box-shadow: 2px 2px 0px #000000;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+}

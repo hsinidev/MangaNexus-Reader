@@ -1,0 +1,317 @@
+/* theme-shonen-punch.css — High-Energy Shōnen Battle Manga Template */
+
+/* --- TAILWIND CSS V4 THEME DEFINITIONS --- */
+@theme {
+  --color-theme-bg: #0a0505;
+  --color-theme-card: #160a0c;
+  --color-theme-border: #ef4444;
+  --color-theme-border-glow: #f59e0b;
+  --color-theme-text: #fffbeb;
+  --color-theme-text-muted: #fcd34d;
+  --color-theme-primary: #ef4444;
+  --color-theme-secondary: #f59e0b;
+  --color-theme-accent: #fcd34d;
+  
+  --font-shonen-title: 'Outfit', sans-serif;
+  --font-shonen-body: 'Poppins', sans-serif;
+  --font-shonen-action: 'Bangers', cursive;
+}
+
+/* --- THEME SYSTEM GLOBAL OVERRIDES --- */
+:root {
+  --theme-bg: #0a0505;
+  --theme-card: #160a0c;
+  --theme-border: #ef4444;
+  --theme-text: #fffbeb;
+  --theme-text-muted: #fcd34d;
+  --theme-primary: #ef4444;
+  --theme-primary-rgb: 239, 68, 68;
+  --theme-secondary: #f59e0b;
+  --theme-secondary-rgb: 245, 158, 11;
+  --theme-accent: #fcd34d;
+  --theme-primary-hover: #b91c1c;
+  --theme-glow: rgba(239, 68, 68, 0.4);
+  --theme-gradient: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-secondary) 100%);
+  --theme-card-hover-border: #f59e0b;
+  
+  /* Ember Screentone Dot Pattern (Representing Heat and Combat Energy) */
+  --shonen-screentone: radial-gradient(rgba(239, 68, 68, 0.18) 15%, transparent 16%);
+  --shonen-screentone-size: 8px 8px;
+}
+
+/* Global Font & Canvas Atmosphere */
+* {
+  font-family: 'Poppins', sans-serif !important;
+  letter-spacing: -0.01em;
+}
+
+body {
+  background-color: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Base Ember-Glow Screentone Background Frame */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--shonen-screentone);
+  background-size: var(--shonen-screentone-size);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 25%, transparent 10%, rgba(10, 5, 5, 0.95) 85%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Push graphic structures over background canvas layers */
+main, .public-header, .hero-dossier, .manga-card {
+  position: relative;
+  z-index: 10;
+}
+
+/* Disable basic backgrounds */
+.bg-grid,
+.bg-radial,
+#particle-canvas {
+  display: none !important;
+}
+
+/* --- HIGH-IMPACT HERO TYPOGRAPHY (ONOMATOPOEIA STYLE) --- */
+.manga-title,
+.single-title,
+.section-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.04em !important;
+  transform: skewX(-6deg); /* Aggressive forward-leaning combat stance */
+  background: linear-gradient(135deg, #ffffff 15%, var(--theme-secondary) 65%, var(--theme-primary) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  /* Thick triple physical 3D outline drop-shadows */
+  text-shadow: 4px 4px 0px #0a0505, 6px 6px 0px var(--theme-primary) !important;
+  filter: drop-shadow(0px 0px 12px rgba(239, 68, 68, 0.3));
+}
+
+/* Dynamic chapter section stamp indicator */
+.section-title::before {
+  content: "CHAPTER // ";
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.55em;
+  color: var(--theme-primary);
+  letter-spacing: 0.05em;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* --- PUBLIC NAVIGATION (SLANTED IMPACT HEADER) --- */
+.public-header {
+  background-color: rgba(22, 10, 12, 0.92) !important;
+  border: 3px solid var(--theme-primary) !important;
+  border-radius: 0px !important; /* Bold flat corners representing comic boxes */
+  /* Sharp geometric slice on the bottom navigation margin */
+  clip-path: polygon(0 0, 100% 0, 99.5% 100%, 0.5% 100%) !important;
+  box-shadow: 6px 6px 0px 0px var(--theme-primary) !important; /* Strong structural comic shadow */
+  backdrop-filter: blur(12px) !important;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.public-header:hover {
+  border-color: var(--theme-secondary) !important;
+  box-shadow: 8px 8px 0px 0px var(--theme-secondary) !important;
+  transform: translate(-2px, -2px);
+}
+
+/* Shōnen Logo Badge Stamps */
+.logo-box {
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary)) !important;
+  border-radius: 0px !important;
+  border: 2px solid #000;
+  transform: rotate(-4deg) skewX(-4deg); /* Impact sticker rotation */
+  box-shadow: 4px 4px 0px #0a0505 !important;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-box:hover {
+  transform: rotate(4deg) skewX(2deg) scale(1.1);
+}
+
+.brand-text {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to right, #ffffff, var(--theme-secondary)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* --- MANGA PANEL COMIC CARDS (SOLID SHADOWS & HALFTONE INTERACTION) --- */
+.manga-card,
+.crud-card,
+.stat-card,
+.synopsis-card,
+.manga-synopsis-card,
+.admin-mangas-section {
+  background-color: var(--theme-card) !important;
+  border: 3px solid var(--theme-primary) !important; /* Thick traditional manga borders */
+  border-radius: 0px !important; /* Sharp corners for comic panels */
+  box-shadow: 6px 6px 0px #000 !important; /* Heavy offset shadows */
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+
+.manga-card:hover,
+.stat-card:hover {
+  transform: translate(-4px, -4px) !important;
+  border-color: var(--theme-secondary) !important;
+  box-shadow: 10px 10px 0px var(--theme-secondary) !important;
+}
+
+/* Screentone hover interactive effect */
+.manga-card::before,
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--shonen-screentone);
+  background-size: var(--shonen-screentone-size);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.manga-card:hover::before,
+.stat-card:hover::before {
+  opacity: 0.35;
+}
+
+/* Manga Cover Image Stylizer inside Cards */
+.manga-card img,
+.chapter-card-thumb img {
+  filter: grayscale(10%) contrast(110%) brightness(95%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.manga-card:hover img,
+.chapter-card-thumb:hover img {
+  filter: grayscale(0%) contrast(100%) brightness(100%);
+  transform: scale(1.02);
+}
+
+/* --- PREMIUM CHAPTER CATALOGS --- */
+.chapter-card-premium {
+  background-color: rgba(22, 10, 12, 0.45) !important;
+  border: 2px dashed var(--theme-border) !important; /* Cut-out coupon style comic borders */
+  border-radius: 0px !important;
+  transition: all 0.25s ease !important;
+}
+
+.chapter-card-premium:hover {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  border-style: solid !important;
+  border-color: var(--theme-secondary) !important;
+  padding-left: 1.25rem !important; /* Slide dynamic animation */
+}
+
+.chapter-card-thumb {
+  border-radius: 0px !important;
+  border: 2px solid #000 !important;
+  box-shadow: 3px 3px 0px #000 !important;
+}
+
+/* --- THE HIGH-IMPACT BUTTONS (SHONEN BADGE STYLE) --- */
+.btn {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border-radius: 0px !important; /* Classic blocky shape */
+  border: 3px solid #000 !important;
+  box-shadow: 4px 4px 0px #000 !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px #000 !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-secondary) 100%) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--theme-secondary) 0%, var(--theme-primary) 100%) !important;
+}
+
+/* Accent Action Badges (for Chapter Numbers, status indicators) */
+.manga-badge {
+  font-family: 'Bangers', sans-serif !important;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  background-color: var(--theme-accent) !important;
+  color: #000 !important;
+  padding: 3px 10px !important;
+  border: 3px solid #000 !important;
+  box-shadow: 3px 3px 0px #000 !important;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+
+/* --- HERO SPLASH PAGE (THE DOSSIER) --- */
+.hero-dossier {
+  position: relative;
+  background-image: 
+    linear-gradient(135deg, rgba(10, 5, 5, 0.95) 25%, rgba(239, 68, 68, 0.25) 75%), 
+    url('/images/hero_shonen.webp');
+  background-size: cover;
+  background-position: center;
+  border: 4px solid #000 !important;
+  border-radius: 0px !important;
+  padding: 5rem 3rem !important;
+  box-shadow: 10px 10px 0px #000, 10px 10px 0px 4px var(--theme-primary) !important;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+/* Speed Lines Background Overlay for action hero panels */
+.hero-dossier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(245, 158, 11, 0.08) 12px, rgba(245, 158, 11, 0.08) 13px),
+    repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(239, 68, 68, 0.08) 12px, rgba(239, 68, 68, 0.08) 13px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dramatic slant design asset behind content */
+.hero-dossier::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.15));
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 2;
+}

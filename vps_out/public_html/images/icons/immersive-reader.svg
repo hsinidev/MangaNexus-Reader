@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cyanBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <filter id="neonBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Plate -->
+  <rect width="512" height="512" rx="128" fill="#090b11" stroke="#06b6d4" stroke-width="4" stroke-opacity="0.15" />
+
+  <!-- Abstract Vertical Strip Background -->
+  <g opacity="0.12" stroke="#ffffff" stroke-width="6">
+    <path d="M120 0v512M392 0v512" />
+    <line x1="120" y1="80" x2="392" y2="80" />
+    <line x1="120" y1="200" x2="392" y2="200" />
+    <line x1="120" y1="320" x2="392" y2="320" />
+    <line x1="120" y1="440" x2="392" y2="440" />
+  </g>
+
+  <!-- Reader Frame and Eye Group -->
+  <g filter="url(#neonBlur)">
+    <!-- Device Frame / Tablet Border -->
+    <rect x="96" y="64" width="320" height="384" rx="24" fill="none" stroke="url(#cyanBlueGrad)" stroke-width="12" />
+    <circle cx="256" cy="420" r="10" fill="url(#cyanBlueGrad)" />
+
+    <!-- Vertical Strip Image Boxes inside Frame -->
+    <!-- Top Image Panel -->
+    <rect x="120" y="88" width="272" height="96" rx="8" fill="#1e293b" opacity="0.8" />
+    <!-- Manga panel grid line mockup -->
+    <path d="M230 88v96M120 136h110M230 148h162" stroke="url(#cyanBlueGrad)" stroke-width="2" opacity="0.4" />
+
+    <!-- Bottom Image Panel -->
+    <rect x="120" y="304" width="272" height="96" rx="8" fill="#1e293b" opacity="0.8" />
+    <path d="M280 304v96M280 352h112M120 340h160" stroke="url(#cyanBlueGrad)" stroke-width="2" opacity="0.4" />
+
+    <!-- Central Focus: The Eye of Immersion -->
+    <path d="M136 240 C176 180, 336 180, 376 240 C336 300, 176 300, 136 240 Z" fill="#0f172a" stroke="url(#cyanBlueGrad)" stroke-width="10" />
+    <circle cx="256" cy="240" r="40" fill="url(#cyanBlueGrad)" />
+    <!-- Pupil & Glint -->
+    <circle cx="256" cy="240" r="18" fill="#ffffff" />
+    <circle cx="266" cy="230" r="6" fill="#090b11" />
+  </g>
+</svg>

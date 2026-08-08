@@ -1,0 +1,2 @@
+# Block all direct web access to vendor dependency files
+Deny from all

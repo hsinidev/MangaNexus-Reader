@@ -1,0 +1,29 @@
+# ══════════════════════════════════════════════════════════════
+# UPLOADS DIRECTORY SECURITY — Block All Script Execution (RCE Prevention)
+# ══════════════════════════════════════════════════════════════
+
+# Disable directory listing
+Options -Indexes -ExecCGI
+
+# Block all server-side script execution (Apache 2.4+ syntax)
+<FilesMatch "\.(php|phtml|php3|php4|php5|php6|php7|php8|php9|phps|phar|shtml|pl|py|rb|cgi|asp|aspx|jsp|sh|bash|zsh|bat|cmd|exe|htaccess)$">
+    Require all denied
+</FilesMatch>
+
+# Legacy Apache 2.2 compatibility fallback
+<IfModule !mod_authz_core.c>
+    <FilesMatch "\.(php|phtml|php3|php4|php5|php6|php7|php8|php9|phps|phar|shtml|pl|py|rb|cgi|asp|aspx|jsp|sh|bash|zsh|bat|cmd|exe)$">
+        Order Deny,Allow
+        Deny from all
+    </FilesMatch>
+</IfModule>
+
+# Force files served as plain text (prevents MIME sniffing attacks)
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Deny access to any .htaccess files inside subdirectories
+<Files ".htaccess">
+    Require all denied
+</Files>

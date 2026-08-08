@@ -1,0 +1,334 @@
+/* theme-deep-ocean.css — Ultra-Premium Abyssal-Manga Layout Template */
+
+
+/* --- TAILWIND v4 THEME VARIABLES --- */
+@theme {
+  --color-theme-bg: #010610;
+  --color-theme-card: #060d1e;
+  --color-theme-border: #0ea5e9;
+  --color-theme-border-glow: #06b6d4;
+  --color-theme-text: #f0fdf4;
+  --color-theme-text-muted: #38bdf8;
+  --color-theme-primary: #0ea5e9;
+  --color-theme-secondary: #06b6d4;
+  --color-theme-accent: #facc15;
+
+  --font-manga-body: 'Plus Jakarta Sans', sans-serif;
+  --font-manga-impact: 'Bangers', cursive;
+  --font-manga-title: 'Syne', sans-serif;
+}
+
+:root {
+  --theme-bg: #010610;
+  --theme-card: #060d1e;
+  --theme-border: rgba(14, 165, 233, 0.25);
+  --theme-text: #f0fdf4;
+  --theme-text-muted: #38bdf8;
+  --theme-primary: #0ea5e9;
+  --theme-primary-rgb: 14, 165, 233;
+  --theme-secondary: #06b6d4;
+  --theme-secondary-rgb: 6, 182, 212;
+  --theme-accent: #facc15;
+  --theme-primary-hover: #0284c7;
+  --theme-glow: rgba(14, 165, 233, 0.35);
+  --theme-gradient: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-secondary) 100%);
+  --theme-card-hover-border: rgba(14, 165, 233, 0.65);
+
+  /* Bioluminescent Bubble Screentone (Deep Ocean Dot Halftone) */
+  --ocean-screentone: radial-gradient(rgba(14, 165, 233, 0.16) 20%, transparent 22%);
+  --ocean-screentone-size: 12px 12px;
+}
+
+/* --- GLOBAL BODY SETTINGS & DEEP WATER ATMOSPHERE --- */
+* {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  letter-spacing: -0.01em;
+}
+
+body {
+  background-color: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient Deep Trench Vignette & Aquatic Halftone Grid Overlays */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--ocean-screentone);
+  background-size: var(--ocean-screentone-size);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 50% -20%, rgba(14, 165, 233, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 50% 110%, rgba(6, 182, 212, 0.12) 0%, rgba(1, 6, 16, 0.98) 85%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Layer Isolation for Main Content */
+main, .public-header, .hero-dossier, .manga-card {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- HIGH-IMPACT ABYSSAL DISPLAY TYPOGRAPHY --- */
+.manga-title,
+.single-title,
+.section-title {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.04em !important;
+  transform: skewX(-4deg); /* Fluid hydrodynamic tilt */
+  background: linear-gradient(135deg, #ffffff 30%, var(--theme-secondary) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  /* Thick high-contrast dark abyssal underglow shadow */
+  text-shadow: 4px 4px 0px rgba(1, 6, 16, 0.9), 0px 0px 15px rgba(14, 165, 233, 0.4) !important;
+}
+
+/* --- FLOATING WAVE COMMAND BAR (PUBLIC NAVIGATION) --- */
+.public-header {
+  background-color: rgba(6, 13, 30, 0.85) !important;
+  border: 2px solid var(--theme-border) !important;
+  border-radius: 9999px !important; /* Premium hydrodynamic capsule structure */
+  backdrop-filter: blur(16px) !important;
+  /* Thick solid black & neon-cyan double offset shadow */
+  box-shadow: 
+    0px 0px 20px rgba(14, 165, 233, 0.15),
+    4px 4px 0px 0px rgba(6, 182, 212, 0.5) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.public-header:hover {
+  border-color: var(--theme-secondary) !important;
+  box-shadow: 
+    0px 0px 30px rgba(6, 182, 212, 0.3),
+    6px 6px 0px 0px var(--theme-primary) !important;
+}
+
+.logo-box {
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary)) !important;
+  border-radius: 50% !important;
+  border: 2px solid #010610;
+  box-shadow: 3px 3px 0px rgba(14, 165, 233, 0.4) !important;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-box:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.brand-text {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to right, #ffffff, var(--theme-secondary)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* --- THE HYDRODYNAMIC CARDS (COMIC FRAME WITH SCREEN INTERACTIVE COATINGS) --- */
+.manga-card,
+.crud-card,
+.stat-card,
+.synopsis-card,
+.manga-synopsis-card,
+.admin-mangas-section {
+  background-color: var(--theme-card) !important;
+  border: 2px solid var(--theme-border) !important;
+  /* Soft organic capsule curves fit for deep-sea environments */
+  border-radius: 20px !important;
+  box-shadow: 4px 4px 0px 0px rgba(14, 165, 233, 0.15) !important;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Ocean current flow / bubble screentone activating on interaction */
+.manga-card::before,
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--ocean-screentone);
+  background-size: var(--ocean-screentone-size);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.manga-card:hover::before,
+.stat-card:hover::before {
+  opacity: 0.35;
+}
+
+.manga-card:hover,
+.stat-card:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+  border-color: var(--theme-secondary) !important;
+  /* Bioluminescent glow pop combined with flat shadow projection */
+  box-shadow: 
+    0px 0px 25px rgba(6, 182, 212, 0.25),
+    6px 6px 0px 0px var(--theme-primary) !important;
+}
+
+/* Comic-art contrasting adjustment for cover graphics */
+.manga-card img,
+.chapter-card-thumb img {
+  filter: contrast(108%) brightness(92%) saturate(90%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.manga-card:hover img,
+.chapter-card-thumb:hover img {
+  filter: contrast(100%) brightness(100%) saturate(100%);
+}
+
+/* --- HIGH-END OCEANIC CHAPTER LISTINGS --- */
+.chapter-card-premium {
+  background-color: rgba(6, 13, 30, 0.6) !important;
+  border: 1px dashed rgba(14, 165, 233, 0.3) !important;
+  border-radius: 14px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.chapter-card-premium:hover {
+  background-color: rgba(14, 165, 233, 0.1) !important;
+  border-style: solid !important;
+  border-color: var(--theme-secondary) !important;
+  padding-left: 1.6rem !important; /* Kinetic underwater wave sliding effect */
+  box-shadow: inset 4px 0px 0px 0px var(--theme-secondary) !important;
+}
+
+.chapter-card-thumb {
+  border-radius: 10px !important;
+  border: 2px solid rgba(14, 165, 233, 0.35) !important;
+  box-shadow: 3px 3px 0px rgba(1, 6, 16, 0.6) !important;
+}
+
+/* --- CAPSULE-FLOW SYSTEM BUTTONS & BADGES --- */
+.btn {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  border-radius: 9999px !important; /* Perfect rounded wave design */
+  border: 2px solid #010610 !important;
+  box-shadow: 4px 4px 0px #010610 !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px #010610 !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-secondary) 100%) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--theme-secondary) 0%, var(--theme-primary) 100%) !important;
+}
+
+/* Dynamic Abyssal Badges */
+.badge {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  border-radius: 9999px !important;
+  border: 1.5px solid var(--theme-primary) !important;
+  background-color: rgba(14, 165, 233, 0.08) !important;
+  color: var(--theme-text-muted) !important;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+}
+
+/* Action Manga Highlight Label Badge */
+.manga-badge {
+  font-family: 'Bangers', sans-serif !important;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  background-color: var(--theme-accent) !important;
+  color: #010610 !important;
+  padding: 3px 12px !important;
+  border: 2px solid #010610 !important;
+  box-shadow: 3px 3px 0px #010610 !important;
+  transform: rotate(-2.5deg) skewX(-2.5deg);
+  display: inline-block;
+}
+
+/* --- FORM TEXT AREAS & CONSOLE CONTROLS --- */
+.form-input, 
+.form-select, 
+.form-textarea {
+  border-radius: 12px !important;
+  border: 2px solid var(--theme-border) !important;
+  background-color: rgba(1, 6, 16, 0.6) !important;
+  color: var(--theme-text) !important;
+  transition: all 0.25s ease;
+}
+
+.form-input:focus, 
+.form-select:focus, 
+.form-textarea:focus {
+  border-color: var(--theme-secondary) !important;
+  outline: none;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.25) !important;
+}
+
+/* --- THE SPLASH SCREEN HERO DOSSIER --- */
+.hero-dossier {
+  position: relative;
+  background-image:
+    linear-gradient(135deg, rgba(1, 6, 16, 0.95) 25%, rgba(6, 13, 30, 0.75) 100%),
+    url('/images/hero_deep_ocean.webp');
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--theme-primary) !important;
+  border-radius: 24px !important;
+  padding: 5rem 3rem !important;
+  box-shadow: 
+    0px 0px 30px rgba(14, 165, 233, 0.12),
+    8px 8px 0px 0px rgba(14, 165, 233, 0.25) !important;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+/* Swirling currents & water flow lines graphic elements inside hero splash */
+.hero-dossier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(35deg, transparent, transparent 15px, rgba(14, 165, 233, 0.05) 15px, rgba(14, 165, 233, 0.05) 16px),
+    repeating-linear-gradient(-35deg, transparent, transparent 15px, rgba(6, 182, 212, 0.03) 15px, rgba(6, 182, 212, 0.03) 16px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hydrodynamic current overlay across background header splash */
+.hero-dossier::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -5%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.12));
+  transform: skewX(-15deg);
+  pointer-events: none;
+  z-index: 2;
+}

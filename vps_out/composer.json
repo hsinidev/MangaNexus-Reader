@@ -1,0 +1,46 @@
+{
+    "name": "hsinidev/manganexus",
+    "description": "Premium Manga Publishing Portal - Enterprise Upgrade",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hsini mohamed",
+            "email": "contact@hsini.dev"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "monolog/monolog": "^3.0",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "phpstan/phpstan": "^1.11",
+        "friendsofphp/php-cs-fixer": "^3.58"
+    },
+    "autoload": {
+        "psr-4": {
+            "MangaNexus\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MangaNexus\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "stan": "phpstan analyse",
+        "format": "php-cs-fixer fix --dry-run --diff",
+        "format-fix": "php-cs-fixer fix"
+    },
+    "config": {
+        "platform": {
+            "php": "8.3.0"
+        },
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    }
+}

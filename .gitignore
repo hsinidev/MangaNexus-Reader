@@ -1,0 +1,6 @@
+# Environment files with sensitive credentials (if any override)
+# .env is included in vps_out for reference, but ignore local temporary files
+*.tmp
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,293 @@
+/* theme-amethyst-fantasy.css — Premium Action/Fantasy Manga Theme */
+
+/* Import high-character fonts for that premium graphic-novel feeling */
+
+/* --- TAILWIND CSS V4 THEME DEFINITIONS --- */
+@theme {
+  --color-theme-bg: #070312;
+  --color-theme-card: #0f0a22;
+  --color-theme-border: #311c62;
+  --color-theme-border-glow: #a855f7;
+  --color-theme-text: #f3ebff;
+  --color-theme-text-muted: #b592eb;
+  --color-theme-primary: #a855f7;
+  --color-theme-secondary: #ec4899;
+  --color-theme-accent: #facc15; /* Manga-yellow high impact action accent */
+  
+  --font-manga-title: 'Syne', sans-serif;
+  --font-manga-body: 'Plus Jakarta Sans', sans-serif;
+  --font-manga-action: 'Bangers', cursive;
+}
+
+/* --- THEME SYSTEM GLOBAL OVERRIDES --- */
+:root {
+  --theme-bg: #070312;
+  --theme-card: #0f0a22;
+  --theme-border: #311c62;
+  --theme-text: #f3ebff;
+  --theme-text-muted: #b592eb;
+  --theme-primary: #a855f7;
+  --theme-secondary: #ec4899;
+  --theme-accent: #facc15;
+  --theme-primary-hover: #9333ea;
+  --theme-glow: rgba(168, 85, 247, 0.4);
+  
+  /* Screentone Dot Pattern Generator for that authentic Manga print texture */
+  --manga-screentone: radial-gradient(rgba(168, 85, 247, 0.15) 15%, transparent 16%);
+  --manga-screentone-size: 8px 8px;
+}
+
+/* Global Font & Body Overrides */
+* {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  letter-spacing: -0.01em;
+}
+
+body {
+  background-color: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient Screentone overlay for the entire background */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--manga-screentone);
+  background-size: var(--manga-screentone-size);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dark subtle vignette shadow to bring depth to the canvas */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, transparent 20%, rgba(7, 3, 18, 0.9) 80%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure content sits cleanly above the custom backgrounds */
+main, .public-header, .hero-dossier, .manga-card {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- PREMIUM GRAPHIC TYPOGRAPHY --- */
+.manga-title,
+.single-title,
+.section-title {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.03em !important;
+  transform: skewX(-4deg); /* Dynamic slanted comic text look */
+  background: linear-gradient(135deg, #ffffff 30%, #ec4899 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: 4px 4px 0px rgba(168, 85, 247, 0.2);
+  filter: drop-shadow(0px 2px 8px rgba(168, 85, 247, 0.3));
+}
+
+/* --- PUBLIC NAVIGATION (DYNAMIC FLOATING COMMAND BAR) --- */
+.public-header {
+  background-color: rgba(15, 10, 34, 0.9) !important;
+  border: 2px solid var(--theme-border) !important;
+  border-radius: 0.75rem !important; /* Manga thrives on stylized semi-sharp angles */
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 5px 5px 0px 0px var(--theme-primary) !important; /* Thick comic-style offset shadow */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.public-header:hover {
+  border-color: var(--theme-primary) !important;
+  box-shadow: 8px 8px 0px 0px var(--theme-secondary) !important;
+}
+
+/* Manga Logo Box with a skewed badge framing */
+.logo-box {
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary)) !important;
+  border-radius: 6px !important;
+  transform: rotate(-3deg);
+  box-shadow: 3px 3px 0px #000 !important;
+  transition: transform 0.2s ease;
+}
+
+.logo-box:hover {
+  transform: rotate(3deg) scale(1.1);
+}
+
+.brand-text {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to right, #ffffff, var(--theme-secondary)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* --- MANGA CARDS & COMPONENT FRAMES (Screentone Grid Interactive) --- */
+.manga-card,
+.crud-card,
+.stat-card,
+.synopsis-card,
+.manga-synopsis-card,
+.admin-mangas-section {
+  background-color: var(--theme-card) !important;
+  border: 2px solid var(--theme-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 4px 4px 0px 0px rgba(49, 28, 98, 0.8) !important;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Interactive screentone hover and slide-up effect */
+.manga-card::before,
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--manga-screentone);
+  background-size: var(--manga-screentone-size);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.manga-card:hover::before,
+.stat-card:hover::before {
+  opacity: 0.25;
+}
+
+.manga-card:hover,
+.stat-card:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+  border-color: var(--theme-primary) !important;
+  box-shadow: 8px 8px 0px 0px var(--theme-primary) !important;
+}
+
+/* Manga Cover Image Stylizer inside Cards */
+.manga-card img,
+.chapter-card-thumb img {
+  filter: grayscale(20%) contrast(105%) brightness(95%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.manga-card:hover img,
+.chapter-card-thumb:hover img {
+  filter: grayscale(0%) contrast(100%) brightness(100%);
+}
+
+/* --- PREMIUM CHAPTER CATALOGS --- */
+.chapter-card-premium {
+  background-color: rgba(15, 10, 34, 0.5) !important;
+  border: 1px dashed var(--theme-border) !important; /* Stylized cut-out comic divider */
+  border-radius: 8px !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.chapter-card-premium:hover {
+  background-color: rgba(49, 28, 98, 0.25) !important;
+  border-style: solid !important;
+  border-color: var(--theme-secondary) !important;
+  padding-left: 1.5rem !important; /* Elegant kinetic sliding action */
+}
+
+.chapter-card-thumb {
+  border-radius: 6px !important;
+  border: 2px solid var(--theme-border) !important;
+  overflow: hidden;
+  box-shadow: 3px 3px 0px rgba(0,0,0,0.5) !important;
+}
+
+/* --- THE HIGH-IMPACT BUTTONS (SHONEN BADGE STYLE) --- */
+.btn {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border-radius: 6px !important; /* Bold flat corners instead of circles */
+  border: 2px solid #000 !important;
+  box-shadow: 4px 4px 0px #000 !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px #000 !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-secondary) 100%) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--theme-secondary) 0%, var(--theme-primary) 100%) !important;
+}
+
+/* Accent Action Badges (for Chapter Numbers, status indicators) */
+.manga-badge {
+  font-family: 'Bangers', sans-serif !important;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  background-color: var(--theme-accent) !important;
+  color: #000 !important;
+  padding: 2px 8px !important;
+  border: 2px solid #000 !important;
+  box-shadow: 2px 2px 0px #000 !important;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+/* --- HERO SPLASH PAGE (THE DOSSIER) --- */
+.hero-dossier {
+  position: relative;
+  background-image: 
+    linear-gradient(135deg, rgba(7, 3, 18, 0.95) 30%, rgba(49, 28, 98, 0.8) 100%), 
+    url('/images/hero_amethyst.webp');
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--theme-border) !important;
+  border-radius: 16px !important;
+  padding: 5rem 3rem !important;
+  box-shadow: 8px 8px 0px 0px rgba(168, 85, 247, 0.25) !important;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+/* Speed Lines Background Overlay for action hero panels */
+.hero-dossier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(236, 72, 153, 0.05) 10px, rgba(236, 72, 153, 0.05) 11px),
+    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(168, 85, 247, 0.05) 10px, rgba(168, 85, 247, 0.05) 11px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dramatic slant design asset behind content */
+.hero-dossier::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1));
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 2;
+}

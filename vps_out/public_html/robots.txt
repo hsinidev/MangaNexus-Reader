@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kimetsu-yaiba.online/sitemap.xml

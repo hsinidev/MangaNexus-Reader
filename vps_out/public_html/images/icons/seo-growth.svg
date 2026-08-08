@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="growthGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#84cc16" />
+    </linearGradient>
+    <filter id="neonGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="9" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Plate -->
+  <rect width="512" height="512" rx="128" fill="#090b11" stroke="#10b981" stroke-width="4" stroke-opacity="0.15" />
+
+  <!-- Data Grid Backdrop -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="3">
+    <line x1="80" y1="380" x2="432" y2="380" />
+    <line x1="80" y1="300" x2="432" y2="300" />
+    <line x1="80" y1="220" x2="432" y2="220" />
+    <line x1="80" y1="140" x2="432" y2="140" />
+    <line x1="120" y1="100" x2="120" y2="400" />
+    <line x1="200" y1="100" x2="200" y2="400" />
+    <line x1="280" y1="100" x2="280" y2="400" />
+    <line x1="360" y1="100" x2="360" y2="400" />
+  </g>
+
+  <!-- SEO and Magnifier Growth Group -->
+  <g filter="url(#neonGreen)">
+    <!-- Upward Trend Line and Rocketing Arrow -->
+    <path d="M120 360 L200 310 L280 240 L360 200 L420 120" fill="none" stroke="url(#growthGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Arrow Tip -->
+    <path d="M380 120 L420 120 L420 160" fill="none" stroke="url(#growthGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Magnifying Glass focusing on a key chart point -->
+    <g transform="translate(10, 10)">
+      <!-- Glass Ring -->
+      <circle cx="280" cy="240" r="54" fill="#0f172a" fill-opacity="0.6" stroke="url(#growthGrad)" stroke-width="10" />
+      
+      <!-- Glass Handle -->
+      <line x1="318" y1="278" x2="370" y2="330" stroke="url(#growthGrad)" stroke-width="14" stroke-linecap="round" />
+      <!-- Handle Tip Accent -->
+      <rect x="360" y="320" width="16" height="16" rx="4" fill="#ffffff" transform="rotate(45 368 328)" />
+      
+      <!-- Lens Inner Glare -->
+      <path d="M246 220 A 40 40 0 0 1 294 200" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.7" />
+    </g>
+
+    <!-- Key target index star (First page ranking) -->
+    <path d="M420 80 L423 88 L431 90 L423 92 L420 100 L417 92 L409 90 L417 88 Z" fill="#ffffff" />
+  </g>
+</svg>

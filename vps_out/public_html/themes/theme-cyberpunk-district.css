@@ -1,0 +1,338 @@
+/* theme-cyberpunk-district.css — Ultra-Premium Cyberpunk-Manga Layout Template */
+
+
+/* --- TAILWIND v4 THEME VARIABLES --- */
+@theme {
+  --color-theme-bg: #030208;
+  --color-theme-card: #090a16;
+  --color-theme-border: #06b6d4;
+  --color-theme-border-glow: #ec4899;
+  --color-theme-text: #e0f2fe;
+  --color-theme-text-muted: #06b6d4;
+  --color-theme-primary: #06b6d4;
+  --color-theme-secondary: #ec4899;
+  --color-theme-accent: #facc15;
+
+  --font-cyber-mono: 'JetBrains Mono', monospace;
+  --font-manga-impact: 'Bangers', cursive;
+  --font-cyber-display: 'Syne', sans-serif;
+}
+
+:root {
+  --theme-bg: #030208;
+  --theme-card: #090a16;
+  --theme-border: rgba(6, 182, 212, 0.3);
+  --theme-text: #e0f2fe;
+  --theme-text-muted: #06b6d4;
+  --theme-primary: #06b6d4;
+  --theme-primary-rgb: 6, 182, 212;
+  --theme-secondary: #ec4899;
+  --theme-secondary-rgb: 236, 72, 153;
+  --theme-accent: #facc15;
+  --theme-primary-hover: #38bdf8;
+  --theme-glow: rgba(6, 182, 212, 0.35);
+  --theme-gradient: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-secondary) 100%);
+  --theme-card-hover-border: rgba(6, 182, 212, 0.65);
+
+  /* Futuristic Digital Screentone Dot Pattern (Grid & Halftone Hybrid) */
+  --cyber-screentone: radial-gradient(rgba(6, 182, 212, 0.18) 15%, transparent 16%);
+  --cyber-screentone-size: 10px 10px;
+}
+
+/* --- GLOBAL BODY SETTINGS & BACKGROUND --- */
+* {
+  font-family: 'JetBrains Mono', monospace !important;
+  letter-spacing: -0.02em;
+}
+
+body {
+  background-color: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+  position: relative;
+  overflow-x: hidden;
+  /* Cybermatic diagnostics scan grid background */
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px) !important;
+  background-size: 32px 32px !important;
+}
+
+/* Ambient Cybermatic Vignette & Halftone Screen Frame */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--cyber-screentone);
+  background-size: var(--cyber-screentone-size);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, transparent 10%, rgba(3, 2, 8, 0.95) 85%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+main, .public-header, .hero-dossier, .manga-card {
+  position: relative;
+  z-index: 10;
+}
+
+.bg-grid {
+  display: none !important;
+}
+
+/* --- HIGH-IMPACT TYPOGRAPHY & SKEWED HEADERS --- */
+.manga-title,
+.single-title,
+.section-title {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  transform: skewX(-6deg); /* Aggressive action manga leaning */
+  letter-spacing: -0.04em !important;
+  background: linear-gradient(135deg, #ffffff 40%, var(--theme-secondary) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  /* Anaglyph neon 3D offset drop shadows */
+  text-shadow: 3px 3px 0px rgba(6, 182, 212, 0.4), -3px -1px 0px rgba(236, 72, 153, 0.3) !important;
+  filter: drop-shadow(0px 0px 8px rgba(6, 182, 212, 0.2));
+}
+
+/* Sub-title terminal aesthetic indicators */
+.section-title::before {
+  content: "SYS_ERR // ";
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.45em;
+  color: var(--theme-secondary);
+  letter-spacing: 0.1em;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+/* --- PUBLIC NAVIGATION (SHARP CYBERPUNK CHAMFERS) --- */
+.public-header {
+  background-color: rgba(9, 10, 22, 0.9) !important;
+  border: 2px solid var(--theme-primary) !important;
+  border-radius: 0px !important;
+  /* Sharp futuristic chamfer cuts on bottom corners */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%) !important;
+  box-shadow: 5px 5px 0px 0px rgba(6, 182, 212, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.public-header:hover {
+  border-color: var(--theme-secondary) !important;
+  box-shadow: 8px 8px 0px 0px rgba(236, 72, 153, 0.6) !important;
+}
+
+.logo-box {
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary)) !important;
+  border-radius: 0px !important;
+  transform: rotate(-2deg);
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0px rgba(6, 182, 212, 0.5) !important;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-box:hover {
+  transform: rotate(4deg) scale(1.08);
+}
+
+.brand-text {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to right, #ffffff, var(--theme-primary)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* --- FUTURISTIC ACTION CARDS WITH SCREEN-GRID LAYERS --- */
+.manga-card,
+.crud-card,
+.stat-card,
+.synopsis-card,
+.manga-synopsis-card,
+.admin-mangas-section {
+  background-color: var(--theme-card) !important;
+  border: 2px solid var(--theme-border) !important;
+  border-radius: 0px !important;
+  /* Classic retro-future sci-fi angular container cut */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
+  box-shadow: 4px 4px 0px 0px rgba(6, 182, 212, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Neon interface diagnostics layout guidelines inside cards */
+.manga-card::before,
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--cyber-screentone);
+  background-size: var(--cyber-screentone-size);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.manga-card:hover::before,
+.stat-card:hover::before {
+  opacity: 0.3;
+}
+
+.manga-card:hover,
+.stat-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: var(--theme-secondary) !important;
+  /* Shift from low-tech cyber grid to overloaded digital pink matrix */
+  box-shadow: 7px 7px 0px 0px var(--theme-secondary) !important;
+}
+
+/* Image filter to lock high contrast comic values */
+.manga-card img,
+.chapter-card-thumb img {
+  filter: contrast(110%) brightness(90%) sepia(20%) hue-rotate(160deg);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.manga-card:hover img,
+.chapter-card-thumb:hover img {
+  filter: contrast(100%) brightness(100%) grayscale(0%);
+}
+
+/* --- PREMIUM CHAPTER CATALOGS --- */
+.chapter-card-premium {
+  background-color: rgba(9, 10, 22, 0.6) !important;
+  border: 1px dashed rgba(6, 182, 212, 0.4) !important;
+  border-radius: 0px !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.chapter-card-premium:hover {
+  background-color: rgba(6, 182, 212, 0.1) !important;
+  border-style: solid !important;
+  border-color: var(--theme-secondary) !important;
+  padding-left: 1.75rem !important; /* Slide dynamic feedback to mimic terminal outputs */
+  box-shadow: inset 5px 0 0px 0px var(--theme-secondary) !important;
+}
+
+.chapter-card-thumb {
+  border-radius: 0px !important;
+  border: 2px solid rgba(6, 182, 212, 0.4) !important;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6) !important;
+} 
+
+/* --- SYSTEM INTERACTIVE BUTTONS & BADGES --- */
+.btn {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  border-radius: 0px !important;
+  border: 2px solid #000 !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%) !important;
+  box-shadow: 3px 3px 0px #000 !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px #000 !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-secondary) 100%) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--theme-secondary) 0%, var(--theme-primary) 100%) !important;
+  border-color: #000 !important;
+}
+
+/* Dynamic system badges */
+.badge, .badge-ongoing {
+  font-family: 'JetBrains Mono', monospace !important;
+  border-radius: 0px !important;
+  border: 2px solid var(--theme-primary) !important;
+  background-color: rgba(6, 182, 212, 0.1) !important;
+  color: var(--theme-primary) !important;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%) !important;
+}
+
+.badge-ongoing {
+  color: var(--theme-secondary) !important;
+  border-color: var(--theme-secondary) !important;
+  background-color: rgba(236, 72, 153, 0.1) !important;
+}
+
+/* Comic / Manga highlight action tags */
+.manga-badge {
+  font-family: 'Bangers', sans-serif !important;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  background-color: var(--theme-accent) !important;
+  color: #000 !important;
+  padding: 2px 10px !important;
+  border: 2px solid #000 !important;
+  box-shadow: 3px 3px 0px #000 !important;
+  transform: rotate(-3deg) skewX(-3deg);
+  display: inline-block;
+}
+
+/* --- THE SPLASH SCREEN HERO DOSSIER --- */
+.hero-dossier {
+  position: relative;
+  background-image:
+    linear-gradient(135deg, rgba(3, 2, 8, 0.96) 25%, rgba(9, 10, 22, 0.8) 100%),
+    url('/images/hero_cyberpunk.webp');
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--theme-primary) !important;
+  border-radius: 0px !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%) !important;
+  padding: 5rem 3rem !important;
+  box-shadow: 8px 8px 0px 0px rgba(6, 182, 212, 0.3) !important;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+/* Dynamic diagnostic telemetry overlay for that Manga panel depth */
+.hero-dossier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(6, 182, 212, 0.06) 12px, rgba(6, 182, 212, 0.06) 13px),
+    repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(236, 72, 153, 0.04) 12px, rgba(236, 72, 153, 0.04) 13px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Neon laser-cut accents across the background splash header */
+.hero-dossier::after {
+  content: "CRITICAL_INTERFACE_CONNECTED";
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(6, 182, 212, 0.4);
+  position: absolute;
+  bottom: 12px;
+  right: 40px;
+  letter-spacing: 0.2em;
+  pointer-events: none;
+  z-index: 2;
+}
