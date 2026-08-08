@@ -270,6 +270,12 @@ erDiagram
 
 ## 📄 License & Author Information
 
+<p align="left">
+  <a href="https://hsini.dev">
+    <img src="profile.png" alt="hsinidev Profile Photo" width="120" style="border-radius: 50%;" />
+  </a>
+</p>
+
 - **Author**: **[hsinidev](https://hsini.dev)**
 - **Live URL**: **[https://manga.hsini.dev](https://manga.hsini.dev)**
 - **Repository**: **[https://github.com/hsinidev/MangaNexus-Reader](https://github.com/hsinidev/MangaNexus-Reader)**
