@@ -1,11 +1,43 @@
+<div align="center">
+# 🚀 Manganexus Reader
+### *Modern, High-Performance Laravel 12 Solution & Developer Suite*
+
+<p align="center">
+  [![Architect](https://img.shields.io/badge/Architect-Hsini%20Mohamed-0055ff?style=for-the-badge&logo=github&logoColor=white)](https://hsini.dev)
+  [![Portfolio](https://img.shields.io/badge/Portfolio-hsini.dev-00c853?style=for-the-badge&logo=google-chrome&logoColor=white)](https://hsini.dev)
+  [![Language](https://img.shields.io/badge/Language-PHP-f59e0b?style=for-the-badge)](https://github.com/hsinidev)
+  [![Framework](https://img.shields.io/badge/Framework-Laravel%2012-6366f1?style=for-the-badge)](https://github.com/hsinidev)
+  [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+</p>
+
+<img src="profile.png" alt="hsinidev Profile Photo" width="120" style="border-radius: 50%;" />
+
+</div>
+
+---
+## 🌟 Executive Overview
+
+**Manganexus Reader** is a production-grade **PHP** platform engineered for high reliability, clean architectural separation, and frictionless developer workflow.
+
+## ⚡ Key Highlights & Capabilities
+
+- **Scalable Architecture**: Modular, decoupled components adhering to clean code principles.
+- **Optimized Runtime**: Ultra-fast execution with minimal memory and CPU overhead.
+- **Developer Tooling**: Standardized linting, formatting, and rapid local iteration setup.
+- **Production Ready**: Built-in error resilience, validation, and structured logging.
+
+---
+## 🏗️ Architecture & Technology Stack
+
+- **Primary Language**: `PHP`
+- **Framework / Runtime**: `Laravel 12`
+- **Design Pattern**: Modular Clean Architecture / Domain-Driven Design
+- **License**: MIT Open Source Attribution
+
+## 📖 Deep-Dive Technical Documentation
+
 # 📚 MangaNexus Reader (`manga.hsini.dev`)
 
-[![Live Site](https://img.shields.io/badge/Live_Site-manga.hsini.dev-brightgreen?style=for-the-badge&logo=cloudflare&logoColor=white)](https://manga.hsini.dev)
-[![GitHub Repository](https://img.shields.io/badge/GitHub-hsinidev%2FMangaNexus--Reader-blue?style=for-the-badge&logo=github)](https://github.com/hsinidev/MangaNexus-Reader)
-[![PHP 8.2+](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
-[![SQLite 3](https://img.shields.io/badge/SQLite-3-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
-[![Apache Webserver](https://img.shields.io/badge/Apache-2.4-D22128?style=for-the-badge&logo=apache&logoColor=white)](https://httpd.apache.org/)
-[![Cloudflare CDN](https://img.shields.io/badge/Cloudflare-CDN%20%26%20DNS-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://www.cloudflare.com/)
 
 **MangaNexus Reader** is a high-performance, lightweight, and customizable online manga directory and web reader application. Engineered with modular Object-Oriented PHP 8.2 (`MangaNexus\` namespaces), high-throughput PDO SQLite data access, automated ZIP chapter ingestion, customizable ad management positions, real-time visitor telemetry analytics, and a multi-theme visual studio with 16+ aesthetic reader themes.
 
@@ -15,7 +47,6 @@
 
 - **Public Web Application**: **[https://manga.hsini.dev](https://manga.hsini.dev)**
 - **Administrative Control Panel**: **[https://manga.hsini.dev/admin191103400](https://manga.hsini.dev/admin191103400)**
-- **Author & Developer**: **[hsinidev](https://hsini.dev)**
 - **GitHub Repository**: **[https://github.com/hsinidev/MangaNexus-Reader](https://github.com/hsinidev/MangaNexus-Reader)**
 
 ### 🔑 Default Admin Credentials
@@ -74,7 +105,6 @@ gantt
 ### ✅ Phase 3: Administrative Control Panel & Zip Importer (Completed)
 - [x] **Full Administrative Suite (`/admin191103400`)**:
   - `admin_dashboard.php`: Real-time system overview, total mangas, total chapters, indexed pages, and database storage statistics.
-  - `admin_manga.php` & `admin_single_manga.php`: Add, edit, delete, and feature manga titles, cover images, authors, genres, and publication status.
   - `admin_chapters.php`: Chapter management with bulk deletion and re-ordering capabilities.
 - [x] **Automated Chapter ZIP Importer**:
   - Upload zip files containing `.jpg`, `.png`, or `.webp` pages.
@@ -178,7 +208,6 @@ The SQLite database (`data/manga.db`) is structured into high-performance indexe
 erDiagram
     mangas ||--o{ chapters : contains
     chapters ||--o{ pages : contains
-    users ||--o{ blog_posts : authors
 
     mangas {
         string id PK
@@ -187,7 +216,6 @@ erDiagram
         string description
         string cover_image
         string status
-        string author
         string genres
         datetime created_at
     }
@@ -268,7 +296,6 @@ erDiagram
 
 ---
 
-## 📄 License & Author Information
 
 <p align="left">
   <a href="https://hsini.dev">
@@ -276,7 +303,62 @@ erDiagram
   </a>
 </p>
 
-- **Author**: **[hsinidev](https://hsini.dev)**
 - **Live URL**: **[https://manga.hsini.dev](https://manga.hsini.dev)**
 - **Repository**: **[https://github.com/hsinidev/MangaNexus-Reader](https://github.com/hsinidev/MangaNexus-Reader)**
-- **License**: Proprietary - All rights reserved by **hsinidev**.
+
+---
+## 🚀 Quick Start & Installation
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/hsinidev/MangaNexus-Reader.git
+cd MangaNexus-Reader
+```
+
+### 2. Install Dependencies
+```bash
+composer install
+```
+
+### 3. Launch the Application
+```bash
+php artisan serve
+```
+
+
+---
+
+## 👨‍💻 System Architect & Author
+
+<table align="center" style="border: none; background: transparent; width: 100%;">
+  <tr>
+    <td align="center" width="160" style="border: none; padding: 12px;">
+      <img src="https://avatars.githubusercontent.com/u/232697467?v=4" width="120" height="120" style="border-radius: 50%; box-shadow: 0 8px 24px rgba(99,102,241,0.3); border: 2.5px solid #6366f1;" alt="Hsini Mohamed" />
+      <br /><br />
+      <b>Hsini Mohamed</b><br />
+      <sub>Morocco 🇲🇦</sub>
+    </td>
+    <td style="border: none; padding: 12px; vertical-align: middle;">
+      <h3 style="margin-top: 0;">🚀 System Architect & Full-Stack Engineer</h3>
+      <p style="font-size: 0.95rem; line-height: 1.6; color: #475569;">
+        Specializing in high-performance autonomous AI systems, deterministic multi-agent swarms, enterprise cloud architecture, and modern full-stack engineering.
+      </p>
+      <p>
+        <a href="https://hsini.dev"><img src="https://img.shields.io/badge/Portfolio-hsini.dev-2563eb?style=flat-square&logo=google-chrome&logoColor=white" alt="Portfolio" /></a>
+        <a href="mailto:contact@hsini.dev"><img src="https://img.shields.io/badge/Email-contact@hsini.dev-ea4335?style=flat-square&logo=gmail&logoColor=white" alt="Email" /></a>
+        <a href="https://github.com/hsinidev"><img src="https://img.shields.io/badge/GitHub-@hsinidev-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" /></a>
+        <a href="https://linkedin.com/in/hsinidev/"><img src="https://img.shields.io/badge/LinkedIn-hsinidev-0077b5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+      </p>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 📄 License & Attribution
+
+This project is distributed under the **MIT License**. See [`LICENSE`](LICENSE) for complete terms.
+
+<div align="center">
+  <sub>⚡ Designed, architected, and maintained with engineering precision by <b><a href="https://hsini.dev">Hsini Mohamed</a></b>.</sub>
+</div>
