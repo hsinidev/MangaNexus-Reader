@@ -1,15 +1,15 @@
 <div align="center">
 
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=180&section=header&text=Manganexus%20Reader&fontSize=42&fontColor=fff&animation=fadeIn&fontAlignY=38" width="100%" style="max-width: 100%; border-radius: 12px; margin-bottom: 20px;" alt="Manganexus Reader Header Banner" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=180&section=header&text=MangaNexus%20Reader&fontSize=40&fontColor=fff&animation=fadeIn&fontAlignY=38" width="100%" style="max-width: 100%; border-radius: 12px; margin-bottom: 20px;" alt="MangaNexus Reader Header Banner" />
 
-  <h1>🚀 Manganexus Reader</h1>
-  <p><em>Modern, High-Performance Laravel 12 Solution & Developer Suite</em></p>
+  <h1>🚀 MangaNexus Reader</h1>
+  <p><strong>High-Performance Comic & Graphic Novel Web Reader with Canvas Smoothing</strong></p>
 
   <p align="center">
     <a href="https://hsini.dev"><img src="https://img.shields.io/badge/Architect-Hsini%20Mohamed-0055ff?style=for-the-badge&logo=github&logoColor=white" alt="Architect: Hsini Mohamed" /></a>
-    <a href="https://hsini.dev"><img src="https://img.shields.io/badge/Portfolio-hsini.dev-00c853?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio: hsini.dev" /></a>
-    <a href="https://github.com/hsinidev"><img src="https://img.shields.io/badge/Language-PHP-f59e0b?style=for-the-badge" alt="Language: PHP" /></a>
-    <a href="https://github.com/hsinidev"><img src="https://img.shields.io/badge/Framework-Laravel%2012-6366f1?style=for-the-badge" alt="Framework: Laravel 12" /></a>
+    <a href="https://hsini.dev"><img src="https://img.shields.io/badge/Portfolio-hsini.dev-00c853?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio" /></a>
+    <a href="https://github.com/hsinidev"><img src="https://img.shields.io/badge/Language-TypeScript-3178C6?style=for-the-badge" alt="Language: TypeScript" /></a>
+    <a href="https://github.com/hsinidev"><img src="https://img.shields.io/badge/Framework-Next.js%20/%20React%2019%20/%20Tailwind-6366f1?style=for-the-badge" alt="Framework: Next.js / React 19 / Tailwind" /></a>
     <a href="https://github.com/hsinidev/MangaNexus-Reader"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License: MIT" /></a>
   </p>
 
@@ -19,21 +19,21 @@
 
 ## 🌟 Executive Overview
 
-**Manganexus Reader** is a production-grade **PHP** platform engineered for high reliability, clean architectural separation, and frictionless developer workflow.
+**MangaNexus Reader** is a modern, ultra-responsive web reader engineered for high-resolution comics, graphic novels, and manga with smooth canvas rendering, infinite vertical reading, and offline chapter caching.
 
 ## ⚡ Key Highlights & Capabilities
 
-- **Scalable Architecture**: Modular, decoupled components adhering to clean code principles.
-- **Optimized Runtime**: Ultra-fast execution with minimal memory and CPU overhead.
-- **Developer Tooling**: Standardized linting, formatting, and rapid local iteration setup.
-- **Production Ready**: Built-in error resilience, validation, and structured logging.
+- **Seamless Reading Modes**: Single page, double page, and infinite vertical continuous scroll.
+- **Hardware-Accelerated Zoom**: GPU-rendered pan, pinch, and zoom with zero image stutter.
+- **Offline Chapter Caching**: IndexedDB client-side image storage for uninterrupted reading.
+- **Keyboard & Gesture Shortcuts**: Complete hotkey navigation, reading history, and bookmark sync.
 
 ---
 
 ## 🏗️ Architecture & Technology Stack
 
-- **Primary Language**: `PHP`
-- **Framework / Runtime**: `Laravel 12`
+- **Primary Language**: `TypeScript`
+- **Framework / Runtime**: `Next.js / React 19 / Tailwind`
 - **Design Pattern**: Modular Clean Architecture / Domain-Driven Design
 - **License**: MIT Open Source Attribution
 
@@ -47,12 +47,12 @@ cd MangaNexus-Reader
 
 ### 2. Install Dependencies
 ```bash
-composer install
+npm install
 ```
 
 ### 3. Launch the Application
 ```bash
-php artisan serve
+npm run dev
 ```
 
 
